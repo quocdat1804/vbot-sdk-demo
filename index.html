@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>VBotSDKDemo</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h5>Tài khoản</h5>
+    </div>
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label>Token tài khoản</label>
+        </div>
+        <div class="p-2">
+          <textarea id="tokenUser" rows="3" cols="60"></textarea>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-success" id="acceptedToken" type="button">
+            Kết nối
+          </button>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label>Chọn kiểu gọi</label>
+        </div>
+        <div class="p-2">
+          <select name="typeCall" id="typeCall">
+            <option value="hotlineCall">Gọi hotline</option>
+            <option value="memberCall">Gọi thành viên</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label id="labelSelectHotline">Chọn Hotline</label>
+        </div>
+        <div class="p-2">
+          <select name="selectHotline" id="selectHotline">
+            <option>Không có hotline</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label id="labelPhoneNumber">Nhập số điện thoại</label>
+        </div>
+        <div class="p-2">
+          <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại" />
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label id="labelMemberBranch">Nhập nhánh thành viên</label>
+        </div>
+        <div class="p-2">
+          <input type="text" id="memberBranch" placeholder="Nhập nhánh thành viên" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Cuộc gọi</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label>Gọi đi</label>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-success" id="call-btn" type="button">
+                Gọi đi
+              </button>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-danger" id="cancel-call-btn" type="button" hidden>
+                Hủy gọi
+              </button>
+            </div>
+            <div class="p-2">
+              <label id="callOut-info"></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label>Gọi đến</label>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-success" id="accecpt-call-btn" type="button" hidden>
+                Chấp nhận
+              </button>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-danger" id="reject-call-btn" type="button" hidden>
+                Từ chối
+              </button>
+            </div>
+            <div class="p-2">
+              <label id="callIn-info"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label>Thao tác trong cuộc gọi</label>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-secondary" id="hold-call-btn" type="button" hidden>
+            Giữ máy
+          </button>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-secondary" id="unhold-call-btn" type="button" hidden>
+            Hủy giữ
+          </button>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-danger" id="terminate-call-btn" type="button" hidden>
+            Cúp máy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Cài đặt</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label>Thiết bị thu</label>
+            </div>
+            <div class="p-2">
+              <select name="selectDeviceInput" id="selectDeviceInput">
+                <option>Chọn thiết bị</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label>Thiết bị phát</label>
+            </div>
+            <div class="p-2">
+              <select name="selectDeviceOutput" id="selectDeviceOutput">
+                <option>Chọn thiết bị</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label for="volume-range">Âm lượng thu</label>
+            </div>
+            <div class="p-2">
+              <input value="1" id="volume-range-input" type="range" min="0" max="1" step=".05" />
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="p-2">
+              <label for="volume-range">Âm lượng phát</label>
+            </div>
+            <div class="p-2">
+              <input value="1" id="volume-range-output" type="range" min="0" max="1" step=".05" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label>Tắt micro</label>
+        </div>
+        <div class="p-2">
+          <input id="mic-mute" type="checkbox" />
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="p-2">
+          <label>Gọi đến</label>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-success" id="accecpt-call-btn" type="button" style="width: 100px;">
+            Chấp nhận
+          </button>
+        </div>
+        <div class="p-2">
+          <button id="send-dtmf-btn" class="btn btn-success" type="button">
+            Gửi
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Console logs</h5>
+    </div>
+    <div class="card-body">
+      <textarea id="debug-console" rows="10" cols="200" readonly title="Logs các thao tác gọi"></textarea>
+    </div>
+  </div>
+
+  <p>
+    Debugging
+  </p>
+  <textarea id="debug-console" rows="10" cols="200" readonly
+    title="Debugging tool. You can also open your browser console and freely use `flowrouteClient` instance globally available."></textarea>
+  <br />
+  <br />
+
+  <script type="module" src="./vbot-sdk.js"></script>
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>
