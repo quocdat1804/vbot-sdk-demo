@@ -4,8 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <title>VBotSDKDemo</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -206,12 +204,10 @@
 
       <div class="d-flex align-items-center">
         <div class="p-2">
-          <label>Gọi đến</label>
+          <label for="dtmf-input">DTMF</label>
         </div>
         <div class="p-2">
-          <button class="btn btn-success" id="accecpt-call-btn" type="button" style="width: 100px;">
-            Chấp nhận
-          </button>
+          <input id="dtmf-input" placeholder="#" />
         </div>
         <div class="p-2">
           <button id="send-dtmf-btn" class="btn btn-success" type="button">
@@ -230,14 +226,6 @@
       <textarea id="debug-console" rows="10" cols="200" readonly title="Logs các thao tác gọi"></textarea>
     </div>
   </div>
-
-  <p>
-    Debugging
-  </p>
-  <textarea id="debug-console" rows="10" cols="200" readonly
-    title="Debugging tool. You can also open your browser console and freely use `flowrouteClient` instance globally available."></textarea>
-  <br />
-  <br />
 
   <script type="module" src="./vbot-sdk.js"></script>
   <script type="module" src="./index.js"></script>
