@@ -1,9 +1,5 @@
 import { VBotClient } from "./vbot-sdk-1.0.1.js";
-import { Autoplay } from "./vbot-sdk-1.0.1.js";
-import { Features } from "./vbot-sdk-1.0.1.js";
-import { Media } from "./vbot-sdk-1.0.1.js";
-import { Sound } from "./vbot-sdk-1.0.1.js";
-import { log } from "./vbot-sdk-1.0.1.js";
+
 var clientCall;
 var sessionCall;
 
