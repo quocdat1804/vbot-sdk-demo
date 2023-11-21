@@ -1,5 +1,25 @@
 # VBot Web SDK
 
+# v 1.0.5
+
+> Bổ sung bàn phím số
+> 
+
+## Bàn phím số
+
+```jsx
+// Ẩn hiện bàn phím
+// show: bool
+clientCall.showDialpad(show);
+
+// Lắng nghe sự kiện ấn gọi từ bàn phím
+client.on("numberFromDialpad", function (phoneNumber, hotline) {
+    document.getElementById('debug-console').value += `Gọi từ bàn phím: Hotline ${hotline} Số điện thoại ${phoneNumber}\n`;
+    // Gọi hàm thực hiện cuộc gọi
+		makeCall(phoneNumber, hotline);
+});
+```
+
 # v 1.0.1
 
 > Thêm tính năng phát nhạc chờ, early media của nhà mạng
@@ -77,7 +97,7 @@ try {
     return;
   }
 
-	// show progress dang thuc hien cuoc goi
+	// show progress dang thuc hien cuoc goiczbv 
 	// showOutgoingCallProgressHub();
 
 	let { accepted, rejectCause } = await session.accepted(); // wait until the call is picked up

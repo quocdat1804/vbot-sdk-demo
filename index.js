@@ -1,4 +1,4 @@
-import { VBotClient } from "./vbot-sdk-dev.js";
+import { VBotClient } from "./vbot-sdk-1.0.5.js";
 
 var clientCall;
 var sessionCall;
@@ -28,6 +28,12 @@ function statusConnect(client) {
     document.getElementById('debug-console').value += `Trạng thái tài khoản đã thay đổi thành ${status} \n`;
 
   });
+
+  client.on("numberFromDialpad", function (phoneNumber, hotline) {
+
+    document.getElementById('debug-console').value += `Gọi từ bàn phím: Hotline ${hotline} Số điện thoại ${phoneNumber}\n`;
+    makeCall(phoneNumber, hotline);
+  });
 }
 
 async function selectHotline(client) {
@@ -50,11 +56,18 @@ async function selectHotline(client) {
 
 }
 
-async function doCall() {
+async function makeCall(phone, hotline) {
   try {
+    var phoneNumber = '';
+    var hotlineNumber = '';
+    if (phone == null) {
+      phoneNumber = document.getElementById('phoneNumber').value;
+      hotlineNumber = document.getElementById('selectHotline').value;
+    } else {
+      phoneNumber = phone;
+      hotlineNumber = hotline;
+    }
 
-    var phoneNumber = document.getElementById('phoneNumber').value;
-    var hotlineNumber = document.getElementById('selectHotline').value;
     var memberBranch = document.getElementById('memberBranch').value;
     document.getElementById('callOut-info').innerHTML = 'Đang gọi tới' + '\xa0' + phoneNumber;
 
@@ -101,7 +114,14 @@ async function doCall() {
   }
 }
 
-document.getElementById('call-btn').addEventListener('click', doCall);
+document.getElementById('call-btn').addEventListener('click', makeCall);
+document.getElementById('dialpad-btn').addEventListener('click', openDialpad);
+
+var show = true;
+function openDialpad() {
+  show = !show;
+  clientCall.showDialpad(show);
+}
 
 
 function AnswerIncomingCall(client) {
