@@ -1,5 +1,10 @@
 # VBot Web SDK
 
+# v 1.0.7
+
+> Thay đổi base url
+> 
+
 # v 1.0.5
 
 > Bổ sung bàn phím số
