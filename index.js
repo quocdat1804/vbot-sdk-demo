@@ -1,4 +1,4 @@
-import { VBotClient } from "./vbot-sdk-1.0.7.js";
+import { VBotClient } from "./vbot-sdk-1.0.8.js";
 
 var clientCall;
 var sessionCall;

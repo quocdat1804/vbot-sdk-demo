@@ -1,5 +1,9 @@
 # VBot Web SDK
 
+# v 1.0.8
+
+> Sửa lỗi
+
 # v 1.0.7
 
 > Thay đổi base url
